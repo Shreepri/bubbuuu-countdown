@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Bubbuuu 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(circle at 20% 20%, #ffe0ed, transparent 35%),
+                radial-gradient(circle at 80% 80%, #ffd6e7, transparent 35%),
+                #fff0f5;
+
+            font-family: "Georgia", serif;
+        }
+
+        /* Floating hearts */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -50px;
+            left: 0;
+
+            color: #ff80ab;
+            font-size: 22px;
+
+            pointer-events: none;
+            z-index: 0;
+
+            animation: floatUp linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main card */
+
+        .card {
+            position: relative;
+            z-index: 1;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 35px 25px;
+            margin: 20px;
+
+            border-radius: 30px;
+            border: 2px solid #ffd1e2;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 35px rgba(220, 120, 160, 0.2);
+
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff6f9f;
+
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            color: #d45d85;
+            font-size: 32px;
+            line-height: 1.4;
+            margin: 15px 0;
+        }
+
+        .message {
+            color: #a65b78;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .age {
+            color: #c34f7b;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #fff0f6;
+            border-radius: 20px;
+        }
+
+        .small {
+            color: #b77b91;
+            font-size: 15px;
+        }
+
+        .decor {
+            color: #ff9cbd;
+            font-size: 22px;
+            margin: 10px;
+        }
+        .love-note {
+    color: #e75480;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="heart">♡</div>
+
+    <h1>
+        11 days to go,<br>
+        my bubbuuu 💗
+    </h1>
+
+    <div class="decor">♡ ·˚ ༘ ⋆｡♡</div>
+
+    <p class="message">
+        A little countdown for my favourite person.
+    </p>
+
+    <p class="small">
+        You are
+    </p>
+
+    <div class="age" id="age"></div>
+
+    <p class="small">
+        old and still my favourite human ♡
+    </p>
+    <p class="love-note">
+        ♡ Pri loves you! ♡
+    </p>
+
+    <div class="decor">𐙚 ‧₊˚ ⋅♡</div>
+
+</div>
+
+<script>
+
+    // Calculate his exact age in years and days
+
+    function calculateAge() {
+
+        const birthDate = new Date(1997, 10, 15);
+        const today = new Date();
+
+        let years =
+            today.getFullYear() - birthDate.getFullYear();
+
+        let lastBirthday = new Date(
+            today.getFullYear(),
+            10,
+            15
+        );
+
+        if (today < lastBirthday) {
+
+            years--;
+
+            lastBirthday = new Date(
+                today.getFullYear() - 1,
+                10,
+                15
+            );
+        }
+
+        const oneDay = 1000 * 60 * 60 * 24;
+
+        const days = Math.floor(
+            (today - lastBirthday) / oneDay
+        );
+
+        document.getElementById("age").innerText =
+            years + " years, " + days + " days";
+
+    }
+
+    calculateAge();
+
+    setInterval(calculateAge, 1000);
+
+
+    // Create floating hearts
+
+    function createHeart() {
+
+        const heart = document.createElement("div");
+
+        heart.classList.add("floating-heart");
+
+        const hearts = [
+            "♡",
+            "♥",
+            "💕",
+            "💗",
+            "💖",
+            "ღ"
+        ];
+
+        heart.innerText =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (Math.random() * 20 + 15) + "px";
+
+        heart.style.animationDuration =
+            (Math.random() * 5 + 6) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 11000);
+
+    }
+
+    // A new heart appears every 700 milliseconds
+
+    setInterval(createHeart, 700);
+
+</script>
+
+</body>
+</html>
