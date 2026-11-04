@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Bubbuuu 💗</title>
+    <title>For My Bubbuuu 💗</title>
 
     <style>
         * {
@@ -15,34 +15,102 @@
         body {
             margin: 0;
             min-height: 100vh;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #fce7ff, #fff0f5);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-
-            background:
-                radial-gradient(circle at 20% 20%, #ffe0ed, transparent 35%),
-                radial-gradient(circle at 80% 80%, #ffd6e7, transparent 35%),
-                #fff0f5;
-
-            font-family: "Georgia", serif;
+            overflow: hidden;
+            color: #7b3455;
         }
 
-        /* Floating hearts */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 35px 25px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 430px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(200, 100, 150, 0.2);
+            position: relative;
+            z-index: 2;
+        }
 
-        .floating-heart {
+        h1 {
+            color: #e75480;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #e75480;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .clue {
+            background: #fff0f5;
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 15px;
+            margin: 20px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ffc1d5;
+            border-radius: 12px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        input:focus {
+            border-color: #e75480;
+        }
+
+        button {
+            background: #e75480;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #d94370;
+            transform: scale(1.04);
+        }
+
+        #error-message {
+            color: #d94370;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        .love-note {
+            font-size: 24px;
+            color: #e75480;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .heart {
             position: fixed;
-            bottom: -50px;
-            left: 0;
-
-            color: #ff80ab;
+            bottom: -30px;
+            color: #ff8fab;
             font-size: 22px;
-
+            animation: floatUp 7s linear infinite;
+            z-index: 1;
             pointer-events: none;
-            z-index: 0;
-
-            animation: floatUp linear forwards;
-            opacity: 0.8;
         }
 
         @keyframes floatUp {
@@ -51,7 +119,7 @@
                 opacity: 0;
             }
 
-            15% {
+            20% {
                 opacity: 0.8;
             }
 
@@ -61,210 +129,155 @@
             }
         }
 
-        /* Main card */
-
-        .card {
-            position: relative;
-            z-index: 1;
-
-            background: rgba(255, 255, 255, 0.9);
-
-            padding: 35px 25px;
-            margin: 20px;
-
-            border-radius: 30px;
-            border: 2px solid #ffd1e2;
-
-            text-align: center;
-
-            box-shadow:
-                0 10px 35px rgba(220, 120, 160, 0.2);
-
-            max-width: 420px;
-            width: 100%;
+        #birthday-page {
+            display: none;
         }
-
-        .heart {
-            font-size: 50px;
-            color: #ff6f9f;
-
-            animation: heartbeat 2s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.15);
-            }
-        }
-
-        h1 {
-            color: #d45d85;
-            font-size: 32px;
-            line-height: 1.4;
-            margin: 15px 0;
-        }
-
-        .message {
-            color: #a65b78;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .age {
-            color: #c34f7b;
-            font-size: 25px;
-            font-weight: bold;
-            margin-top: 20px;
-            padding: 15px;
-
-            background: #fff0f6;
-            border-radius: 20px;
-        }
-
-        .small {
-            color: #b77b91;
-            font-size: 15px;
-        }
-
-        .decor {
-            color: #ff9cbd;
-            font-size: 22px;
-            margin: 10px;
-        }
-        .love-note {
-    color: #e75480;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: bold;
-    margin-top: 25px;
-    letter-spacing: 1px;
-}
-
     </style>
 </head>
 
 <body>
 
-<div class="card">
+<!-- PASSWORD SCREEN -->
+<div class="card" id="password-screen">
 
-    <div class="heart">♡</div>
+    <h1>Only for my Bubbuuu 💗</h1>
 
-    <h1>
-        11 days to go,<br>
-        my bubbuuu 💗
-    </h1>
+    <p>Before you enter, answer this little question...</p>
 
-    <div class="decor">♡ ·˚ ༘ ⋆｡♡</div>
+    <div class="clue">
+        💌 Clue: The cute name which you gave me recently.
+    </div>
 
-    <p class="message">
-        A little countdown for my favourite person.
-    </p>
+    <input
+            type="password"
+            id="password"
+            placeholder="Enter our secret password"
+    >
 
-    <p class="small">
-        You are
-    </p>
+    <button onclick="checkPassword()">Unlock 💕</button>
 
-    <div class="age" id="age"></div>
-
-    <p class="small">
-        old and still my favourite human ♡
-    </p>
-    <p class="love-note">
-        ♡ Pri loves you! ♡
-    </p>
-
-    <div class="decor">𐙚 ‧₊˚ ⋅♡</div>
+    <p id="error-message"></p>
 
 </div>
 
+
+<!-- BIRTHDAY PAGE -->
+<div class="card" id="birthday-page">
+
+    <h1>Happy Birthday, My Bubbuuu! 🎂💗</h1>
+
+    <p>
+        11 days to go, my bubbuuu 💗
+    </p>
+
+    <p id="age"></p>
+
+    <div class="love-note">
+        Pri loves you! 💕
+    </div>
+
+    <p>
+        You are my favorite person, my happiness,
+        and my sweetest little love. 💖
+    </p>
+
+</div>
+
+
 <script>
 
-    // Calculate his exact age in years and days
+    // PASSWORD CHECK
+    function checkPassword() {
 
+        const enteredPassword =
+            document.getElementById("password").value;
+
+
+        if (enteredPassword.toLowerCase() === "handu") {
+
+            document.getElementById("password-screen").style.display = "none";
+
+            document.getElementById("birthday-page").style.display = "block";
+
+            calculateAge();
+
+        } else {
+
+            document.getElementById("error-message").innerText =
+                "Think from your heart and enter the password 💕";
+
+            document.getElementById("password").value = "";
+
+        }
+    }
+
+
+    // ALLOW ENTER KEY
+    document.getElementById("password").addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+
+    });
+
+
+    // CALCULATE AGE IN YEARS AND DAYS
     function calculateAge() {
 
         const birthDate = new Date(1997, 10, 15);
         const today = new Date();
 
-        let years =
-            today.getFullYear() - birthDate.getFullYear();
+        let years = today.getFullYear() - birthDate.getFullYear();
 
         let lastBirthday = new Date(
             today.getFullYear(),
-            10,
-            15
+            birthDate.getMonth(),
+            birthDate.getDate()
         );
 
         if (today < lastBirthday) {
-
             years--;
-
-            lastBirthday = new Date(
-                today.getFullYear() - 1,
-                10,
-                15
-            );
+            lastBirthday.setFullYear(lastBirthday.getFullYear() - 1);
         }
 
-        const oneDay = 1000 * 60 * 60 * 24;
+        const difference = today - lastBirthday;
 
         const days = Math.floor(
-            (today - lastBirthday) / oneDay
+            difference / (1000 * 60 * 60 * 24)
         );
 
         document.getElementById("age").innerText =
-            years + " years, " + days + " days";
+            "You are " + years + " years and " + days +
+            " days old, my love 💗";
 
     }
 
-    calculateAge();
 
-    setInterval(calculateAge, 1000);
-
-
-    // Create floating hearts
-
+    // FLOATING HEARTS
     function createHeart() {
 
         const heart = document.createElement("div");
 
-        heart.classList.add("floating-heart");
-
-        const hearts = [
-            "♡",
-            "♥",
-            "💕",
-            "💗",
-            "💖",
-            "ღ"
-        ];
-
-        heart.innerText =
-            hearts[Math.floor(Math.random() * hearts.length)];
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
 
         heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration =
+            (Math.random() * 3 + 5) + "s";
 
         heart.style.fontSize =
-            (Math.random() * 20 + 15) + "px";
-
-        heart.style.animationDuration =
-            (Math.random() * 5 + 6) + "s";
+            (Math.random() * 15 + 15) + "px";
 
         document.body.appendChild(heart);
 
-        setTimeout(() => {
+        setTimeout(function() {
             heart.remove();
-        }, 11000);
+        }, 8000);
 
     }
 
-    // A new heart appears every 700 milliseconds
-
-    setInterval(createHeart, 700);
+    setInterval(createHeart, 500);
 
 </script>
 
