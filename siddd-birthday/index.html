@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Siddd 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #dff3ff, #e6e6fa, #f0f8ff);
+            color: #8b4563;
+            overflow: hidden;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 420px;
+            padding: 35px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(220, 120, 160, 0.2);
+            position: relative;
+            z-index: 2;
+            animation: appear 0.7s ease;
+        }
+
+        h1 {
+            color: #e75480;
+            font-size: 28px;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e75480;
+            margin: 25px 0 15px;
+        }
+
+        .sub-message {
+            font-size: 18px;
+            color: #a45b7a;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ffc1d5;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            margin: 15px 0;
+        }
+
+        input:focus {
+            border-color: #e75480;
+        }
+
+        button {
+            background: #e75480;
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #d94370;
+            transform: scale(1.04);
+        }
+
+        #error-message {
+            color: #d94370;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        #surprise {
+            display: none;
+        }
+
+        .floating-sid {
+    position: fixed;
+    bottom: -40px;
+    color: #d879a3;
+    font-size: 22px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: bold;
+    animation: floatUp 8s linear forwards;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-10deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(10deg);
+        opacity: 0;
+    }
+}
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- QUESTION / PASSWORD SCREEN -->
+<div class="card" id="password-screen">
+
+    <h1>Hey Siddd 💗</h1>
+
+    <p>Before you enter, answer this little question...</p>
+
+    <div class="question">
+        What was the first drink I got you? 🥤
+    </div>
+
+    <input
+            type="password"
+            id="password"
+            placeholder="Your answer..."
+    >
+
+    <button onclick="checkPassword()">Unlock 💕</button>
+
+    <p id="error-message"></p>
+
+</div>
+
+
+<!-- AFTER UNLOCKING -->
+<div class="card" id="surprise">
+
+    <h1>10 days to go, my Sid 💗</h1>
+
+    <div class="sub-message">
+        You mean a lot to me. 💌
+    </div>
+
+    <p>
+        I don't know, but I am trying every possible way to make you feel special.
+        Just a small reassurance is more than enough for me.
+    </p>
+    <p> All I need is you to be happy.It makes me feel good when you are really happy.</p>
+
+    <div class="sub-message">
+        Pri loves you 💕
+    </div>
+    <p>Never gonna give up on you love </p>
+    <p>♡♡♡</p>
+
+</div>
+
+
+<script>
+
+    // PASSWORD CHECK - NOT CASE SENSITIVE
+    function checkPassword() {
+
+        const enteredPassword =
+            document.getElementById("password").value
+            .trim()
+            .toLowerCase();
+
+        if (enteredPassword === "white monster") {
+
+            document.getElementById("password-screen").style.display = "none";
+
+            document.getElementById("surprise").style.display = "block";
+
+        } else {
+
+            document.getElementById("error-message").innerText =
+                "Think from your heart and enter the password 💕";
+
+            document.getElementById("password").value = "";
+
+        }
+    }
+
+
+    // ENTER KEY SUPPORT
+    document.getElementById("password").addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+
+    });
+
+
+    // FLOATING SID
+
+function createFloatingSid() {
+
+    const sid = document.createElement("div");
+
+    sid.classList.add("floating-sid");
+    sid.innerText = "sid";
+
+    sid.style.left = Math.random() * 100 + "vw";
+
+    sid.style.animationDuration =
+        (Math.random() * 4 + 6) + "s";
+
+    sid.style.fontSize =
+        (Math.random() * 12 + 18) + "px";
+
+    document.body.appendChild(sid);
+
+    setTimeout(function() {
+        sid.remove();
+    }, 10000);
+
+}
+
+setInterval(createFloatingSid, 700);
+
+    setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
