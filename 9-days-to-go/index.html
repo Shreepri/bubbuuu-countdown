@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Surprise ✨</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #e5f7e9, #d2efdc, #f5f8e8);
+            color: #426b50;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 420px;
+            padding: 40px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(91, 137, 100, 0.15);
+        }
+
+        .sparkle {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 27px;
+            margin-bottom: 15px;
+            color: #4c7959;
+        }
+
+        .clue {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #c7dfcb;
+            border-radius: 14px;
+            outline: none;
+            background: #f8fff9;
+            font-size: 15px;
+            text-align: center;
+            color: #426b50;
+        }
+
+        input:focus {
+            border-color: #8fbd98;
+        }
+
+        button {
+            margin-top: 16px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            background: #9fcba7;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #7fb58a;
+            transform: scale(1.04);
+        }
+
+        .error {
+            margin-top: 12px;
+            color: #b66e6e;
+            font-size: 13px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #surprise h1 {
+            font-size: 34px;
+            margin-bottom: 14px;
+        }
+
+        #surprise .message {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .floating {
+            position: absolute;
+            bottom: -50px;
+            z-index: 1;
+            color: #d5ad55;
+            animation: floatUp linear infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            85% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card" id="passwordCard">
+    <div class="sparkle">✦ ✨ ✦</div>
+
+    <h1>You crack this ,amel ning ede (ง •̀_•́)ง</h1>
+
+    <p class="clue">
+        Something you wrote in the last page of your book
+        and you still have it till today.
+    </p>
+
+    <input
+            type="password"
+            id="password"
+            placeholder="Enter the password"
+            autocomplete="off"
+    >
+
+    <button onclick="unlockSurprise()">Open Surprise ✨</button>
+
+    <p class="error" id="errorMessage"></p>
+</div>
+
+<div class="card hidden" id="surprise">
+    <div class="sparkle">✨ ⋆ ✦ ⋆ ✨</div>
+
+    <h1>9 days to go</h1>
+
+    <p class="message">
+        You know what 💚<br> I love you with all my heart but I don't know how much you love me<br>
+    </p>
+    <p><br></p>
+    <p>Never mind , I love you more than anyone and I wish I'll be able to fulfill all your needs✦</p>
+    <p><br></p>
+    <p>I wish you will be cute like before!</p>
+    <p>Ilu Siddy Siddd✨</p>
+</div>
+
+<script>
+    function unlockSurprise() {
+        const enteredPassword = document
+            .getElementById("password")
+            .value
+            .trim()
+            .toLowerCase();
+
+        if (enteredPassword === "siddu paddu") {
+            document.getElementById("passwordCard").classList.add("hidden");
+            document.getElementById("surprise").classList.remove("hidden");
+            document.getElementById("errorMessage").textContent = "";
+        } else {
+            document.getElementById("errorMessage").textContent =
+                "Oops! Try again, little star ✨";
+        }
+    }
+
+    document.getElementById("password").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            unlockSurprise();
+        }
+    });
+
+    const sparkleSymbols = ["✦", "✨", "⋆", "⭐", "✧", "✶"];
+
+    function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("floating");
+
+        sparkle.textContent = sparkleSymbols[
+            Math.floor(Math.random() * sparkleSymbols.length)
+        ];
+
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.fontSize = (12 + Math.random() * 20) + "px";
+        sparkle.style.animationDuration = (5 + Math.random() * 7) + "s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 12000);
+    }
+
+    setInterval(createSparkle, 400);
+</script>
+
+</body>
+</html>
